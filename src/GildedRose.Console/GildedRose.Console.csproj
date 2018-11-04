@@ -41,6 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemFactory.cs" />
+    <Compile Include="ItemTypes\AgedBrieItem .cs" />
+    <Compile Include="ItemTypes\BackstagePassItem.cs" />
+    <Compile Include="ItemTypes\ConjuredItem.cs" />
+    <Compile Include="ItemTypes\ItemType.cs" />
+    <Compile Include="ItemTypes\NormalItem.cs" />
+    <Compile Include="ItemTypes\SulfurasItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
