@@ -47,7 +47,7 @@
     <Compile Include="ItemTypes\AgedBrieItem .cs" />
     <Compile Include="ItemTypes\BackstagePassItem.cs" />
     <Compile Include="ItemTypes\ConjuredItem.cs" />
-    <Compile Include="ItemTypes\ItemType.cs" />
+    <Compile Include="RuleEngine.cs" />
     <Compile Include="ItemTypes\NormalItem.cs" />
     <Compile Include="ItemTypes\SulfurasItem.cs" />
     <Compile Include="Program.cs" />

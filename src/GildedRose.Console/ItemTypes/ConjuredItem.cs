@@ -1,7 +1,16 @@
-﻿namespace GildedRose.Console.ItemTypes
+﻿using System;
+using System.Collections.Generic;
+
+namespace GildedRose.Console.ItemTypes
 {
-    class ConjuredItem : ItemType
+    class ConjuredItem
     {
-        public ConjuredItem(Item item) : base(item, Rule.SubtractOne, Rule.SubtractOne, Rule.SubtractTwoWhenExpired, Rule.SubtractTwoWhenExpired, Rule.NeverBelowZero) {}
+        internal static void Register(Dictionary<string, IList<Rule>> map)
+        {
+            map.Add(Inventory.CONJURED, new List<Rule>());
+            map[Inventory.CONJURED].Add(Rule.SubtractTwoBeforeExipredAndFourAfter);
+            map[Inventory.CONJURED].Add(Rule.NeverBelowZero);
+            map[Inventory.CONJURED].Add(Rule.ReduceSellInByOne);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace GildedRose.Console
 
         public void UpdateQuality()
         {
-            foreach (var item in Items) ItemFactory.Wrap(item).Update();
+            foreach (var item in Items) ItemFactory.Update(item);
         }
     }
 }
