@@ -1,15 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace GildedRose.Console.ItemTypes
+﻿namespace GildedRose.Console.ItemTypes
 {
-    class AgedBrieItem
+    class AgedBrieItem : ItemType
     {
-        internal static void Register(Dictionary<string, IList<Rule>> map)
-        {
-            map.Add(Inventory.AGED_BRIE, new List<Rule>());
-            map[Inventory.AGED_BRIE].Add(Rule.AddOneBeforeExipredAndTwoAfter);
-            map[Inventory.AGED_BRIE].Add(Rule.NeverGreaterThanFifty);
-            map[Inventory.AGED_BRIE].Add(Rule.ReduceSellInByOne);
-        }
+        public AgedBrieItem(Item item) : base(item) {}
+
+        protected override void UpdateQuality() => item.Quality += (item.SellIn > 0 ? 1 : 2);
     }
 }

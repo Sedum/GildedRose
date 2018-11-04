@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GildedRose.Console.ItemTypes
+﻿namespace GildedRose.Console.ItemTypes
 {
-    class NormalItem
+    internal class NormalItem : ItemType
     {
-        internal static void Register(IList<Rule> list)
-        {
-            list.Add(Rule.SubtractOneBeforeExipredAndTwoAfter);
-            list.Add(Rule.NeverBelowZero);
-            list.Add(Rule.ReduceSellInByOne);
-        }
+        public NormalItem(Item item) : base(item) {}
+
+        protected override void UpdateQuality() => item.Quality -= (item.SellIn > 0 ? 1 : 2);
     }
 }

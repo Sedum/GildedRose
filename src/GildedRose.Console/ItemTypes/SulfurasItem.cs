@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace GildedRose.Console.ItemTypes
+﻿namespace GildedRose.Console.ItemTypes
 {
-    class SulfurasItem
+    class SulfurasItem : ItemType
     {
-        internal static void Register(Dictionary<string, IList<Rule>> map)
-        {
-            map.Add(Inventory.SULFURAS, new List<Rule>());
-        }
+        public SulfurasItem(Item item) : base(item) {}
+
+        protected override void UpdateQuality() {}
+
+        protected override void UpdateSellIn() {}
+
+        protected override void ValidateQualityLimits() {}
     }
 }

@@ -4,21 +4,16 @@ namespace GildedRose.Console
 {
     public class Inventory
     {
-        public const string AGED_BRIE = "Aged Brie";
-        public const string SULFURAS = "Sulfuras, Hand of Ragnaros";
-        public const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
-        public const string CONJURED = "Conjured Mana Cake";
+        private IList<Item> items;
 
-        IList<Item> Items;
-
-        public Inventory(List<Item> items)
-        {
-            Items = items;
-        }
+        public Inventory(List<Item> items) => this.items = items;
 
         public void UpdateQuality()
         {
-            foreach (var item in Items) ItemFactory.Update(item);
+            foreach (var item in items)
+            {
+                ItemFactory.Wrap(item).Update();
+            }
         }
     }
 }

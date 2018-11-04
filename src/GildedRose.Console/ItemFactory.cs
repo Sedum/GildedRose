@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GildedRose.Console.ItemTypes;
 
@@ -6,29 +7,26 @@ namespace GildedRose.Console
 {
     static class ItemFactory
     {
-        private static Dictionary<string, IList<Rule>> map = new Dictionary<string, IList<Rule>>();
-        private static IList<Rule> normalRules = new List<Rule>();
+        public const string AGED_BRIE = "Aged Brie";
+        public const string SULFURAS = "Sulfuras, Hand of Ragnaros";
+        public const string BACKSTAGEPASS = "Backstage passes";
+        public const string CONJURED = "Conjured";
+
+        private static Dictionary<string, Type> map = new Dictionary<string, Type>();
 
         static ItemFactory()
         {
-            AgedBrieItem.Register(map);
-            BackstagePassItem.Register(map);
-            ConjuredItem.Register(map);
-            SulfurasItem.Register(map);
-            NormalItem.Register(normalRules);
+            Register<AgedBrieItem>(AGED_BRIE);
+            Register<BackstagePassItem>(BACKSTAGEPASS);
+            Register<ConjuredItem>(CONJURED);
+            Register<SulfurasItem>(SULFURAS);
         }
 
-        public static void Update(Item item)
+        public static ItemType Wrap(Item item)
         {
-            foreach (var rule in GetRules(item))
-            {
-                RuleEngine.Rules[rule](item);
-            }
+            return (ItemType)Activator.CreateInstance(map.Where(k => item.Name.Contains(k.Key)).Select(v => v.Value).DefaultIfEmpty(typeof(NormalItem)).FirstOrDefault(), item);
         }
 
-        private static IList<Rule> GetRules(Item item)
-        {
-            return map.Where(k => item.Name.Contains(k.Key)).Select(v => v.Value).DefaultIfEmpty(normalRules).FirstOrDefault();
-        }
+        private static void Register<T>(string name) => map.Add(name, typeof(T));
     }
 }

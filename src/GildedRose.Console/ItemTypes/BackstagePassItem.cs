@@ -1,26 +1,9 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-
-namespace GildedRose.Console.ItemTypes
+﻿namespace GildedRose.Console.ItemTypes
 {
-    class BackstagePassItem
+    class BackstagePassItem : ItemType
     {
-        /*
-        static private Dictionary<int, int> limits = new Dictionary<int, int>();
+        public BackstagePassItem(Item item) : base(item) {}
 
-        static BackstagePassItem()
-        {
-            limits.Add(10, 1);
-            limits.Add(5, 2);
-            limits.Add(0, 3);
-        }
-        */
-        internal static void Register(Dictionary<string, IList<Rule>> map)
-        {
-            map.Add(Inventory.BACKSTAGEPASS, new List<Rule>());
-            map[Inventory.BACKSTAGEPASS].Add(Rule.BackstagePass);
-            map[Inventory.BACKSTAGEPASS].Add(Rule.NeverGreaterThanFifty);
-            map[Inventory.BACKSTAGEPASS].Add(Rule.ReduceSellInByOne);
-        }
+        protected override void UpdateQuality() => item.Quality += (item.SellIn > 10 ? 1 : (item.SellIn > 5 ? 2 : (item.SellIn > 0 ? 3 : -item.Quality)));
     }
 }

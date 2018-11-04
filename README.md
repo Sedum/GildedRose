@@ -1,3 +1,10 @@
+# A Solution to the Gilded Rose Refactoring Kata
+
+See the original text below.
+
+This is my take on a simple refactored solution where Cyclomatic Complexity is low
+and it's simple to add features.
+
 # Gilded Rose Refactoring Kata
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a 

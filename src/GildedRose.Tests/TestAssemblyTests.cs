@@ -6,10 +6,16 @@ namespace GildedRose.Tests
 {
     public class TestAssemblyTests
     {
+        private const string NORMAL = "foo";
+        private const string AGED_BRIE = "Aged Brie";
+        private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
+        private const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
+        private const string CONJURED = "Conjured Mana Cake";
+
         [Fact]
         public void TestSulfuras()
         {
-            var items = new List<Item>() { new Item() { Name = Inventory.SULFURAS, SellIn = 5, Quality = 80 } };
+            var items = new List<Item>() { new Item() { Name = SULFURAS, SellIn = 5, Quality = 80 } };
             var app = new Inventory(items);
             app.UpdateQuality();
             Assert.Equal(80, items[0].Quality);
@@ -23,10 +29,10 @@ namespace GildedRose.Tests
         [InlineData(0, 1, -1, 0)]
         public void TestNormal(int sellIn, int quality, int expected_sellIn, int expected_quality)
         {
-            var items = new List<Item>() { new Item() { Name = "foo", SellIn = sellIn, Quality = quality } };
+            var items = new List<Item>() { new Item() { Name = NORMAL, SellIn = sellIn, Quality = quality } };
             var app = new Inventory(items);
             app.UpdateQuality();
-            Assert.Equal("foo", items[0].Name);
+            Assert.Equal(NORMAL, items[0].Name);
             Assert.Equal(expected_sellIn, items[0].SellIn);
             Assert.Equal(expected_quality, items[0].Quality);
         }
@@ -40,10 +46,10 @@ namespace GildedRose.Tests
         [InlineData(-2, 50, -3, 50)]
         public void TestAgedBrie(int sellIn, int quality, int expected_sellIn, int expected_quality)
         {
-            var items = new List<Item>() { new Item() { Name = Inventory.AGED_BRIE, SellIn = sellIn, Quality = quality } };
+            var items = new List<Item>() { new Item() { Name = AGED_BRIE, SellIn = sellIn, Quality = quality } };
             var app = new Inventory(items);
             app.UpdateQuality();
-            Assert.Equal(Inventory.AGED_BRIE, items[0].Name);
+            Assert.Equal(AGED_BRIE, items[0].Name);
             Assert.Equal(expected_sellIn, items[0].SellIn);
             Assert.Equal(expected_quality, items[0].Quality);
         }
@@ -57,10 +63,10 @@ namespace GildedRose.Tests
         [InlineData(0, 25, -1, 0)]
         public void TestBackstagepass(int sellIn, int quality, int expected_sellIn, int expected_quality)
         {
-            var items = new List<Item>() { new Item() { Name = Inventory.BACKSTAGEPASS, SellIn = sellIn, Quality = quality } };
+            var items = new List<Item>() { new Item() { Name = BACKSTAGEPASS, SellIn = sellIn, Quality = quality } };
             var app = new Inventory(items);
             app.UpdateQuality();
-            Assert.Equal(Inventory.BACKSTAGEPASS, items[0].Name);
+            Assert.Equal(BACKSTAGEPASS, items[0].Name);
             Assert.Equal(expected_sellIn, items[0].SellIn);
             Assert.Equal(expected_quality, items[0].Quality);
         }
@@ -73,13 +79,12 @@ namespace GildedRose.Tests
         [InlineData(0, 3, -1, 0)]
         public void TestConjured(int sellIn, int quality, int expected_sellIn, int expected_quality)
         {
-            var items = new List<Item>() { new Item() { Name = Inventory.CONJURED, SellIn = sellIn, Quality = quality } };
+            var items = new List<Item>() { new Item() { Name = CONJURED, SellIn = sellIn, Quality = quality } };
             var app = new Inventory(items);
             app.UpdateQuality();
-            Assert.Equal(Inventory.CONJURED, items[0].Name);
+            Assert.Equal(CONJURED, items[0].Name);
             Assert.Equal(expected_sellIn, items[0].SellIn);
             Assert.Equal(expected_quality, items[0].Quality);
         }
-        
     }
 }
