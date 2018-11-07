@@ -12,7 +12,7 @@ namespace GildedRose.Console
         {
             foreach (var item in items)
             {
-                ItemFactory.Wrap(item).Update(item);
+                RuleEngine.GetRules(item).ForEach(r => r.Apply(item));
             }
         }
     }

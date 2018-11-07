@@ -12,6 +12,11 @@ namespace GildedRose.Tests
         private const string BACKSTAGEPASS = "Backstage passes to a TAFKAL80ETC concert";
         private const string CONJURED = "Conjured Mana Cake";
 
+        public TestAssemblyTests()
+        {
+            Configuration.ReadConfiguration();
+        }
+
         [Fact]
         public void TestSulfuras()
         {

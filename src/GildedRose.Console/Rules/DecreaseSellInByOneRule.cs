@@ -1,15 +1,15 @@
 ﻿namespace GildedRose.Console.Rules
 {
-    class ReduceQualityByTwoWhenNotExpiredRule : Rule
+    class DecreaseSellInByOneRule : Rule
     {
         public void Apply(Item item)
         {
-            item.Quality -= 2;
+            item.SellIn--;
         }
 
         public bool IsApplicable(Item item)
         {
-            return item.SellIn > 0;
+            return true;
         }
     }
 }

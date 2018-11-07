@@ -1,0 +1,29 @@
+﻿DefaultRules
+4
+DecreaseQualityByOneWhenNotExpiredRule
+DecreaseQualityByTwoWhenExpiredRule
+QualityMinZeroRule
+DecreaseSellInByOneRule
+4
+Aged Brie
+4
+IncreaseQualityByOneWhenNotExpiredRule
+IncreaseQualityByTwoWhenExpiredRule
+QualityMaxFiftyRule
+DecreaseSellInByOneRule
+Backstage passes
+6
+IncreaseQualityByOneWhenSellInGreaterThanTenRule
+IncreaseQualityByTwoWhenSellInBetweenTenAndFiveRule
+IncreaseQualityByThreeWhenSellInBetweenFiveAndZeroRule
+SetQualityToZeroWhenExpiredRule
+QualityMaxFiftyRule
+DecreaseSellInByOneRule
+Conjured
+4
+DecreaseQualityByTwoWhenNotExpiredRule
+DecreaseQualityByFourWhenExpiredRule
+QualityMinZeroRule
+DecreaseSellInByOneRule
+Sulfuras
+0

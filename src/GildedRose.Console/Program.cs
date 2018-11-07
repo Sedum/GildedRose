@@ -7,6 +7,7 @@ namespace GildedRose.Console
 
         static void Main(string[] args)
         {
+            Configuration.ReadConfiguration();
             System.Console.WriteLine("OMGHAI!");
 
             var items = new List<Item>

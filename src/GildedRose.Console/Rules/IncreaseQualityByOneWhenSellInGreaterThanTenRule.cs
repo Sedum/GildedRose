@@ -1,15 +1,15 @@
 ﻿namespace GildedRose.Console.Rules
 {
-    class ReduceSellInRule : Rule
+    class IncreaseQualityByOneWhenSellInGreaterThanTenRule : Rule
     {
         public void Apply(Item item)
         {
-            item.SellIn--;
+            item.Quality++;
         }
 
         public bool IsApplicable(Item item)
         {
-            return true;
+            return item.SellIn > 10;
         }
     }
 }

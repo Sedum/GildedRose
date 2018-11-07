@@ -1,15 +1,15 @@
 ﻿namespace GildedRose.Console.Rules
 {
-    class IncreaseQualityByTwoWhenSellInBetweenFiveAndTenRule : Rule
+    class IncreaseQualityByThreeWhenSellInBetweenFiveAndZeroRule : Rule
     {
         public void Apply(Item item)
         {
-            item.Quality += 2;
+            item.Quality += 3;
         }
 
         public bool IsApplicable(Item item)
         {
-            return item.SellIn > 5 && item.SellIn <= 10;
+            return item.SellIn > 0 && item.SellIn <=5;
         }
     }
 }
