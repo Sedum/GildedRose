@@ -1,9 +1,15 @@
-﻿namespace GildedRose.Console.ItemTypes
+﻿using GildedRose.Console.Rules;
+
+namespace GildedRose.Console.ItemTypes
 {
     class ConjuredItem : ItemType
     {
-        public ConjuredItem(Item item) : base(item) {}
-
-        protected override void UpdateQuality() => item.Quality -= (item.SellIn > 0 ? 2 : 4);
+        public ConjuredItem()
+        {
+            rules.Add(new ReduceQualityByTwoWhenNotExpiredRule());
+            rules.Add(new ReduceQualityByFourWhenExpiredRule());
+            rules.Add(new QualityMinZeroRule());
+            rules.Add(new ReduceSellInRule());
+        }
     }
 }

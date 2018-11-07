@@ -1,28 +1,17 @@
-﻿using System;
+﻿using GildedRose.Console.Rules;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRose.Console.ItemTypes
 {
     abstract class ItemType
     {
-        protected Item item;
+        protected readonly List<Rule> rules = new List<Rule>();
 
-        public ItemType(Item item) => this.item = item;
-
-        public void Update()
+        public void Update(Item item)
         {
-            UpdateQuality();
-            ValidateQualityLimits();
-            UpdateSellIn();
+            rules.Where(r => r.IsApplicable(item)).ToList().ForEach(r => r.Apply(item));
         }
-
-        protected virtual void ValidateQualityLimits()
-        {
-            item.Quality = Math.Min(50, item.Quality);
-            item.Quality = Math.Max(0, item.Quality);
-        }
-
-        protected virtual void UpdateSellIn() => item.SellIn--;
-
-        protected abstract void UpdateQuality();
     }
 }

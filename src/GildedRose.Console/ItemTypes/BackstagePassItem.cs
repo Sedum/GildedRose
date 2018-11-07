@@ -1,9 +1,17 @@
-﻿namespace GildedRose.Console.ItemTypes
+﻿using GildedRose.Console.Rules;
+
+namespace GildedRose.Console.ItemTypes
 {
     class BackstagePassItem : ItemType
     {
-        public BackstagePassItem(Item item) : base(item) {}
-
-        protected override void UpdateQuality() => item.Quality += (item.SellIn > 10 ? 1 : (item.SellIn > 5 ? 2 : (item.SellIn > 0 ? 3 : -item.Quality)));
+        public BackstagePassItem()
+        {
+            rules.Add(new IncreaseQualityByOneWhenSellInGreaterThenTenRule());
+            rules.Add(new IncreaseQualityByTwoWhenSellInBetweenFiveAndTenRule());
+            rules.Add(new IncreaseQualityByThreeWhenSellInBetweenZeroAndFiveRule());
+            rules.Add(new SetQualityToZeroWhenExpiredRule());
+            rules.Add(new QualityMaxFiftyRule());
+            rules.Add(new ReduceSellInRule());
+        }
     }
 }

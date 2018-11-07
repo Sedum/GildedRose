@@ -1,9 +1,15 @@
-﻿namespace GildedRose.Console.ItemTypes
+﻿using GildedRose.Console.Rules;
+
+namespace GildedRose.Console.ItemTypes
 {
     class AgedBrieItem : ItemType
     {
-        public AgedBrieItem(Item item) : base(item) {}
-
-        protected override void UpdateQuality() => item.Quality += (item.SellIn > 0 ? 1 : 2);
+        public AgedBrieItem()
+        {
+            rules.Add(new IncreaseQualityByOneWhenNotExpiredRule());
+            rules.Add(new IncreaseQualityByTwoWhenExpiredRule());
+            rules.Add(new QualityMaxFiftyRule());
+            rules.Add(new ReduceSellInRule());
+        }
     }
 }

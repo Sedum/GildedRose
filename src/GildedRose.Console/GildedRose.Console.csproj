@@ -52,6 +52,20 @@
     <Compile Include="ItemTypes\SulfurasItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\IncreaseQualityByThreeWhenSellInBetweenZeroAndFiveRule.cs" />
+    <Compile Include="Rules\IncreaseQualityByTwoWhenSellInBetweenFiveAndTenRule.cs" />
+    <Compile Include="Rules\IncreaseQualityByOneWhenSellInGreaterThenTenRule.cs" />
+    <Compile Include="Rules\ReduceQualityByTwoWhenNotExpiredRule.cs" />
+    <Compile Include="Rules\ReduceQualityByFourWhenExpiredRule.cs" />
+    <Compile Include="Rules\Rule.cs" />
+    <Compile Include="Rules\IncreaseQualityByOneWhenNotExpiredRule .cs" />
+    <Compile Include="Rules\IncreaseQualityByTwoWhenExpiredRule.cs" />
+    <Compile Include="Rules\QualityMaxFiftyRule.cs" />
+    <Compile Include="Rules\QualityMinZeroRule.cs" />
+    <Compile Include="Rules\ReduceQualityByTwoWhenExpiredRule.cs" />
+    <Compile Include="Rules\ReduceQualityByOneWhenNotExpiredRule.cs" />
+    <Compile Include="Rules\ReduceSellInRule.cs" />
+    <Compile Include="Rules\SetQualityToZeroWhenExpiredRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

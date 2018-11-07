@@ -1,9 +1,14 @@
-﻿namespace GildedRose.Console.ItemTypes
+﻿using GildedRose.Console.Rules;
+namespace GildedRose.Console.ItemTypes
 {
     internal class NormalItem : ItemType
     {
-        public NormalItem(Item item) : base(item) {}
-
-        protected override void UpdateQuality() => item.Quality -= (item.SellIn > 0 ? 1 : 2);
+        public NormalItem()
+        {
+            rules.Add(new ReduceQualityByOneWhenNotExpiredRule());
+            rules.Add(new ReduceQualityByTwoWhenExpiredRule());
+            rules.Add(new QualityMinZeroRule());
+            rules.Add(new ReduceSellInRule());
+        }
     }
 }

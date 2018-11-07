@@ -4,7 +4,7 @@ namespace GildedRose.Console
 {
     public class Inventory
     {
-        private IList<Item> items;
+        private readonly IList<Item> items;
 
         public Inventory(List<Item> items) => this.items = items;
 
@@ -12,7 +12,7 @@ namespace GildedRose.Console
         {
             foreach (var item in items)
             {
-                ItemFactory.Wrap(item).Update();
+                ItemFactory.Wrap(item).Update(item);
             }
         }
     }
